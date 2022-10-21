@@ -53,7 +53,13 @@ class OnboardingRepository extends IOnboardingRepository {
       //   }),
       // );
 
-      return right(unit);
+      if (email == 'bharatsundal8@gmail.com' && password == 'Qwedc@123') {
+        return right(unit);
+      } else {
+        return left(
+          const Failure.value('Invalid credentials'),
+        );
+      }
     } on Failure catch (e) {
       return left(e);
     }

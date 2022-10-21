@@ -32,17 +32,38 @@ class _LoginScreenState extends State<LoginScreen> {
       body: BlocListener<OnboardingBloc, OnboardingState>(
         listenWhen: (p, c) => p.loginStatus != c.loginStatus,
         listener: (context, state) {
-          if (state.loginStatus == const Status.success()) {
-            Navigator.pushAndRemoveUntil(
-              context,
-              MaterialPageRoute<void>(
-                builder: (context) {
-                  return const HomeScreen();
+          state.loginStatus.maybeWhen(
+            orElse: () {},
+            success: () {
+              Navigator.pushAndRemoveUntil(
+                context,
+                MaterialPageRoute<void>(
+                  builder: (context) {
+                    return const HomeScreen();
+                  },
+                ),
+                (route) => false,
+              );
+            },
+            failure: (f) {
+              f?.maybeWhen(
+                orElse: () {},
+                value: (error) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(
+                        error?.toString() ?? '',
+                        style: Theme.of(context).textTheme.bodyLarge!.copyWith(
+                              color: Colors.black,
+                            ),
+                        textAlign: TextAlign.center,
+                      ),
+                    ),
+                  );
                 },
-              ),
-              (route) => false,
-            );
-          }
+              );
+            },
+          );
         },
         child: Stack(
           children: [
