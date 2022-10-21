@@ -74,8 +74,10 @@ class OnboardingRepository extends IOnboardingRepository {
       final data = await Decoders.decodeQuesAndAnsList(jsonString);
 
       return right(data);
-    } on Failure catch (e) {
-      return left(e);
+    } catch (e) {
+      return left(
+        Failure.value(e.toString()),
+      );
     }
   }
 }
