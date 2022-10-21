@@ -1,0 +1,44 @@
+{
+    "data": [
+        {
+            "ques": "Which statement best correspond to your carrer goals",
+            "ans": [
+                "I know what my gaols are and i am actively working towards them",
+                "Its getting slightly difficult to have a consistent version of what goals I want to achieve",
+                "I struggle a lot with what I want to do and how i want to achieve it"
+            ]
+        },
+        {
+            "ques": "Which statement best correspond to your level of confidence",
+            "ans": [
+                "I am a confident person",
+                "I struggle with confidence quite often",
+                "I am always nervous and unsure of myself"
+            ]
+        },
+        {
+            "ques": "Which statement best correspond to your financial fitness",
+            "ans": [
+                "I am always on top of my game when it comes to financial fitness",
+                "I often worry about my present and future finances",
+                "I let financial stress affect me daily"
+            ]
+        },
+        {
+            "ques": "Which statement best correspond to your spending habits",
+            "ans": [
+                "I worry about every single purchase",
+                "I prioritize biils and savings and spend on as needed basis",
+                "I am impulsive in my spending and rarely keep a track of it"
+            ]
+        },
+        {
+            "ques": "Which statement best correspond to your energy levels",
+            "ans": [
+                "I am energised to tackle my day",
+                "I can get tired easily",
+                "I dont't know why i am always exhausted"
+            ]
+        }
+    ]
+}
