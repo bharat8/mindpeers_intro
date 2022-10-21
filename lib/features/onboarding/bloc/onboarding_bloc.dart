@@ -32,6 +32,9 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
       _onSignUp,
       transformer: throttleDroppable(),
     );
+    on<LoadQuiz>(
+      _onLoadQuiz,
+    );
     on<SetQuestion>(
       _onSetQuestion,
     );
@@ -73,13 +76,13 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
     await Future.delayed(const Duration(seconds: 2), () {});
 
-    final faiilureOrSuccess = await _remoteRepository.login(
+    final failureOrSuccess = await _remoteRepository.login(
       email: state.emailId,
       password: state.password,
     );
 
     emit(
-      faiilureOrSuccess.fold(
+      failureOrSuccess.fold(
         (f) => state.copyWith(
           loginStatus: Status.failure(f),
         ),
@@ -102,18 +105,44 @@ class OnboardingBloc extends Bloc<OnboardingEvent, OnboardingState> {
 
     await Future.delayed(const Duration(seconds: 2), () {});
 
-    final failureOrQuesAnsList = await _remoteRepository.register(
+    final failureOrSuccess = await _remoteRepository.register(
       email: state.emailId,
       password: state.password,
     );
 
     emit(
-      failureOrQuesAnsList.fold(
+      failureOrSuccess.fold(
         (f) => state.copyWith(
           signUpStatus: Status.failure(f),
         ),
         (quesAnsList) => state.copyWith(
           signUpStatus: const Status.success(),
+        ),
+      ),
+    );
+  }
+
+  Future<void> _onLoadQuiz(
+    LoadQuiz event,
+    Emitter<OnboardingState> emit,
+  ) async {
+    emit(
+      state.copyWith(
+        quesAnsLoadStatus: const Status.loading(),
+      ),
+    );
+
+    await Future.delayed(const Duration(seconds: 1), () {});
+
+    final failureOrQuesAnsList = await _remoteRepository.loadQuiz();
+
+    emit(
+      failureOrQuesAnsList.fold(
+        (f) => state.copyWith(
+          quesAnsLoadStatus: Status.failure(f),
+        ),
+        (quesAnsList) => state.copyWith(
+          quesAnsLoadStatus: const Status.success(),
           quesAnsList: quesAnsList,
         ),
       ),

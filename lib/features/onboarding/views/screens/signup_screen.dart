@@ -5,8 +5,8 @@ import 'package:mindpeers_intro/features/core/status/status.dart';
 import 'package:mindpeers_intro/features/core/widgets/loading_indicator.dart';
 import 'package:mindpeers_intro/features/core/widgets/primary_button.dart';
 import 'package:mindpeers_intro/features/onboarding/bloc/onboarding_bloc.dart';
+import 'package:mindpeers_intro/features/onboarding/views/screens/home_screen.dart';
 import 'package:mindpeers_intro/features/onboarding/views/screens/login_screen.dart';
-import 'package:mindpeers_intro/features/onboarding/views/screens/user_mental_health_data.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/email_widget.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/login_signup_helper_text.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/password_valid_constraints.dart';
@@ -38,7 +38,7 @@ class _SignupScreenState extends State<SignupScreen> {
               context,
               MaterialPageRoute<void>(
                 builder: (context) {
-                  return const UserMentalHealthData();
+                  return const HomeScreen();
                 },
               ),
               (route) => false,

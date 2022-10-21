@@ -11,6 +11,7 @@ class OnboardingState extends Equatable {
     this.ballDirection = BallDirection.none,
     this.quesAnsList = const [],
     this.changeQuestionStatus = const Status.initial(),
+    this.quesAnsLoadStatus = const Status.initial(),
   });
 
   final String emailId;
@@ -25,6 +26,7 @@ class OnboardingState extends Equatable {
   final Status changeQuestionStatus;
 
   final List<QuesAnsModel> quesAnsList;
+  final Status quesAnsLoadStatus;
 
   OnboardingState copyWith({
     String? emailId,
@@ -36,6 +38,7 @@ class OnboardingState extends Equatable {
     int? currentQuestion,
     Status? changeQuestionStatus,
     List<QuesAnsModel>? quesAnsList,
+    Status? quesAnsLoadStatus,
   }) {
     return OnboardingState(
       emailId: emailId ?? this.emailId,
@@ -47,6 +50,7 @@ class OnboardingState extends Equatable {
       currentQuestion: currentQuestion ?? this.currentQuestion,
       changeQuestionStatus: changeQuestionStatus ?? this.changeQuestionStatus,
       quesAnsList: quesAnsList ?? this.quesAnsList,
+      quesAnsLoadStatus: quesAnsLoadStatus ?? this.quesAnsLoadStatus,
     );
   }
 
@@ -62,6 +66,7 @@ class OnboardingState extends Equatable {
       currentQuestion,
       changeQuestionStatus,
       quesAnsList,
+      quesAnsLoadStatus,
     ];
   }
 }

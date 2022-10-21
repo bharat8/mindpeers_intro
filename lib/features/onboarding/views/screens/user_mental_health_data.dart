@@ -7,6 +7,7 @@ import 'package:mindpeers_intro/features/core/constants/ui_constants.dart';
 import 'package:mindpeers_intro/features/core/widgets/loading_indicator.dart';
 import 'package:mindpeers_intro/features/onboarding/bloc/onboarding_bloc.dart';
 import 'package:mindpeers_intro/features/onboarding/views/screens/home_screen.dart';
+import 'package:mindpeers_intro/features/onboarding/views/screens/login_signup_intro_screen.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/mountain_ball_anim.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/option_widget.dart';
 import 'package:sizer/sizer.dart';
@@ -47,7 +48,7 @@ class _UserMentalHealthDataState extends State<UserMentalHealthData> {
               await Navigator.of(context).pushAndRemoveUntil(
                 MaterialPageRoute<void>(
                   builder: (context) {
-                    return const HomeScreen();
+                    return const LoginSignupIntroScreen();
                   },
                 ),
                 (route) => false,
@@ -67,8 +68,10 @@ class _UserMentalHealthDataState extends State<UserMentalHealthData> {
                       BlocBuilder<OnboardingBloc, OnboardingState>(
                         builder: (context, state) {
                           return LinearProgressIndicator(
-                            value: state.currentQuestion /
-                                state.quesAnsList.length,
+                            value: state.quesAnsList.isNotEmpty
+                                ? state.currentQuestion /
+                                    state.quesAnsList.length
+                                : 0,
                             backgroundColor: Colors.white,
                             color: AppColors.secondaryColor,
                             minHeight: 15,

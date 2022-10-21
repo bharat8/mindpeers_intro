@@ -33,6 +33,8 @@ class SignUp extends OnboardingEvent {}
 
 class LogIn extends OnboardingEvent {}
 
+class LoadQuiz extends OnboardingEvent {}
+
 class SetQuestion extends OnboardingEvent {
   const SetQuestion({
     required this.ballDirection,

@@ -5,8 +5,8 @@ import 'package:mindpeers_intro/features/onboarding/views/screens/login_screen.d
 import 'package:mindpeers_intro/features/onboarding/views/screens/signup_screen.dart';
 import 'package:mindpeers_intro/features/onboarding/views/widgets/login_signup_helper_text.dart';
 
-class IntroScreen extends StatelessWidget {
-  const IntroScreen({super.key});
+class LoginSignupIntroScreen extends StatelessWidget {
+  const LoginSignupIntroScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
